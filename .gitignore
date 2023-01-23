@@ -1,8 +1,22 @@
-# virtual enviroments
-venv/
+# Django #
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
 
-# py cache folders
-__pycache__/
+# Backup files # 
+*.bak 
 
-# data base
-# db.sqlite3
+# Environments 
+.env 
+.venv 
+env/ 
+venv/ 
+ENV/ 
+env.bak/ 
+venv.bak/ 
+
+# mkdocs documentation 
+/site 
