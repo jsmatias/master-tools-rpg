@@ -1,11 +1,17 @@
 from rest_framework import serializers
-from .models import Player
+from .models import Character, Npc
 
 
-class PlayerSerializer(serializers.ModelSerializer):
+class CharacterSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Player
+        model = Character
         fields = ('id', 'ownerName', 'characterName', 'race', 'className',
                   'armorClass', 'charisma', 'constitution', 'dexterity',
                   'intelligence', 'level', 'strength', 'totalhp', 'wisdom'
                   )
+
+
+class NpcSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Npc
+		fields = ('id', 'name', 'race', 'title', 'city', 'history')

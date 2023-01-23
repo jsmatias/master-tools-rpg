@@ -1,13 +1,21 @@
-from .models import Player
-from .serializers import PlayerSerializer
+from .models import Character, Npc
+from .serializers import CharacterSerializer, NpcSerializer
 from rest_framework import viewsets
 
 # Create your views here.
 
-class PlayerViewSet(viewsets.ModelViewSet):
+class CharacterViewSet(viewsets.ModelViewSet):
     """
-    A viewset for viewing and editing user instances.
+    A viewset for viewing and editing player instances.
     """
-    queryset = Player.objects.all()
-    serializer_class = PlayerSerializer
+    queryset = Character.objects.all()
+    serializer_class = CharacterSerializer
     # http_method_names = ['get', 'post', 'delete', 'put', 'patch']
+
+
+class NpcViewSet(viewsets.ModelViewSet):
+    """
+    A view set for viewing and editing NPCs instances. 
+    """
+    queryset = Npc.objects.all()
+    serializer_class = NpcSerializer

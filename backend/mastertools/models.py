@@ -3,7 +3,7 @@ import uuid
 
 # Create your models here.
 
-class Player(models.Model):
+class Character(models.Model):
 
     id = models.UUIDField(
         primary_key = True,
@@ -27,3 +27,19 @@ class Player(models.Model):
     def __str__(self) -> str:
         return (f"{self.characterName} played by {self.ownerName}" )
 
+
+class Npc(models.Model):
+    
+    id = models.UUIDField(
+        primary_key = True,
+        default = uuid.uuid4,
+        editable = False)
+
+    name = models.CharField(max_length=100)
+    race = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    history = models.CharField(max_length=200)
+    
+    def __str__(self) -> str:
+        return (f'NPC: {self.title} {self.name}')

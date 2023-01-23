@@ -19,7 +19,8 @@ from rest_framework import routers
 from mastertools import views
 
 router = routers.DefaultRouter()
-router.register(r'players', views.PlayerViewSet, basename='player')
+router.register(r'character', views.CharacterViewSet, basename='character')
+router.register(r'npc', views.NpcViewSet, basename='npc')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
