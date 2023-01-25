@@ -5,13 +5,10 @@ from .models import Character, Npc
 class CharacterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Character
-        fields = ('id', 'ownerName', 'characterName', 'race', 'className',
-                  'armorClass', 'charisma', 'constitution', 'dexterity',
-                  'intelligence', 'level', 'strength', 'totalhp', 'wisdom'
-                  )
+        fields = "__all__"
 
 
 class NpcSerializer(serializers.ModelSerializer):
-	class Meta:
-		model = Npc
-		fields = ('id', 'name', 'race', 'title', 'city', 'history')
+    class Meta:
+        model = Npc
+        fields = "__all__"
