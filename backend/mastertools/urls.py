@@ -6,6 +6,6 @@ router = routers.DefaultRouter()
 router.register(r'character', CharacterViewSet, basename='character')
 router.register(r'npc', NpcViewSet, basename='npc')
 
-urlPatterns = [
+urlpatterns = [
     path('api/', include(router.urls))
 ]

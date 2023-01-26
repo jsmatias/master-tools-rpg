@@ -18,7 +18,7 @@ class CharacterViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.request.user.characters.all()
 
-    # Overwrites perform_create
+    # Overwrites perform_create to pass the user id to the owner field
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
@@ -35,6 +35,6 @@ class NpcViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return self.request.user.npcs.all()
 
-    # Overwrites perform_create
+    # Overwrites perform_create to pass the user id to the owner field
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
