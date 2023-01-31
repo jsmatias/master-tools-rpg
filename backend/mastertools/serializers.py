@@ -5,10 +5,10 @@ from .models import Character, Npc
 class CharacterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Character
-        fields = "__all__"
+        fields = serializers.ALL_FIELDS
 
 
 class NpcSerializer(serializers.ModelSerializer):
     class Meta:
         model = Npc
-        fields = "__all__"
+        fields = serializers.ALL_FIELDS
