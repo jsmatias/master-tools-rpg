@@ -29,7 +29,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if User.objects.exclude(pk=user.pk).filter(email=value).exists():
             raise serializers.ValidationError([
-                "A user with this email already registered."])
+                "An user with this email already registered."])
 
         return value
 
@@ -55,12 +55,19 @@ class LoginSerializer(serializers.Serializer):
 # Update Serializer
 class UpdateUserSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(required=True)
-    # first_name = serializers.CharField(max_length=100)
+    username = serializers.CharField(max_length=100, required=True)
     # last_name = serializers.CharField(max_length=100)
 
     class Meta:
         model = User
         fields = ("username", "email",)
+
+    def validate(self, attrs):
+        # unknown = set(self.initial_data) - set(self.fields)
+        # if unknown:
+        #     raise serializers.ValidationError(
+        #         "Unknown field(s): {}".format(", ".join(unknown)))
+        return attrs
 
     def validate_email(self, value):
         """It validates if the email is already registered for another user
@@ -68,7 +75,7 @@ class UpdateUserSerializer(serializers.ModelSerializer):
         user = self.context['request'].user
         if User.objects.exclude(pk=user.pk).filter(email=value).exists():
             raise serializers.ValidationError([
-                "A user with this email already exists."])
+                "An user with this email already exists."])
 
         return value
 
