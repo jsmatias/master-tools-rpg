@@ -2,7 +2,21 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
+class Campaign(models.Model):
+
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False)
+
+    name = models.CharField(max_length=100, null=False)
+    description = models.CharField(max_length=350)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    owner = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='campaigns', null=True)
 
 
 class Character(models.Model):
@@ -29,6 +43,8 @@ class Character(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='characters', null=True)
+    campaign = models.ForeignKey(
+        Campaign, on_delete=models.SET_NULL, related_name='characters', null=True)
 
     def __str__(self) -> str:
         return (f"{self.characterName} played by {self.ownerName}")
@@ -50,6 +66,8 @@ class Npc(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='npcs', null=True)
+    campaign = models.ForeignKey(
+        Campaign, on_delete=models.SET_NULL, related_name='npcs', null=True)
 
     def __str__(self) -> str:
         return (f'NPC: {self.title} {self.name}')

@@ -1,5 +1,11 @@
 from rest_framework import serializers
-from .models import Character, Npc
+from .models import Character, Npc, Campaign
+
+
+class CampaignSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Campaign
+        fields = serializers.ALL_FIELDS
 
 
 class CharacterSerializer(serializers.ModelSerializer):

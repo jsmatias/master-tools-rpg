@@ -328,3 +328,6 @@ class Test04CrossUserAccess(APITestCase):
         response = self.client.patch(
             f"admin/auth/user/{self.user2['id']}", {'username': 'fgjhkfjhf'}, **headers, format='json')
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+
+
+# TODO: Include tests for changing the password
